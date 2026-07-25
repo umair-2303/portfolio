@@ -1,0 +1,175 @@
+/* Muhammad Umair Portfolio - Design Tokens & Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
+
+:root {
+  --color-rudy-red: #A81C1C;
+  --color-rudy-red-glow: rgba(168, 28, 28, 0.4);
+  --color-crayola-yellow: #F5B335;
+  --color-crayola-glow: rgba(245, 179, 53, 0.35);
+  --bg-dark: #0D0D0D;
+  --bg-dark-card: rgba(22, 22, 26, 0.75);
+  --text-white: #F5F5F5;
+  --text-gray: #B3B3B3;
+  --font-main: 'Outfit', 'Inter', sans-serif;
+  --font-urdu: 'Noto Nastaliq Urdu', 'Outfit', serif;
+}
+
+.light-theme {
+  --bg-dark: #F7F8FA;
+  --bg-dark-card: rgba(255, 255, 255, 0.85);
+  --text-white: #121212;
+  --text-gray: #4B5563;
+  --color-rudy-red-glow: rgba(168, 28, 28, 0.2);
+  --color-crayola-glow: rgba(245, 179, 53, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body.rtl-mode {
+  font-family: var(--font-urdu);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 4px;
+  border: 1px solid var(--color-rudy-red);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-rudy-red);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--bg-dark-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.light-theme .glass-panel {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.glass-nav {
+  background: rgba(13, 13, 13, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(168, 28, 28, 0.2);
+}
+
+.light-theme .glass-nav {
+  background: rgba(247, 248, 250, 0.85);
+  border-bottom: 1px solid rgba(168, 28, 28, 0.15);
+}
+
+/* Glowing Border and Text FX */
+.glow-red {
+  box-shadow: 0 0 25px var(--color-rudy-red-glow);
+}
+
+.glow-yellow {
+  box-shadow: 0 0 25px var(--color-crayola-glow);
+}
+
+.glow-text-red {
+  text-shadow: 0 0 12px var(--color-rudy-red-glow);
+}
+
+.glow-text-yellow {
+  text-shadow: 0 0 12px var(--color-crayola-glow);
+}
+
+.gradient-text-red-yellow {
+  background: linear-gradient(135deg, #F5B335 0%, #A81C1C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-border-glow {
+  position: relative;
+  border-radius: 1rem;
+  background: linear-gradient(var(--bg-dark-card), var(--bg-dark-card)) padding-box,
+              linear-gradient(135deg, rgba(245, 179, 53, 0.5), rgba(168, 28, 28, 0.8)) border-box;
+  border: 1px solid transparent;
+}
+
+/* Profile Picture Glow Frame */
+.avatar-frame {
+  position: relative;
+  border-radius: 50%;
+  padding: 8px;
+  background: linear-gradient(135deg, #A81C1C, #F5B335, #A81C1C);
+  background-size: 200% 200%;
+  animation: borderRotate 6s linear infinite, floatAnim 4s ease-in-out infinite;
+  box-shadow: 0 0 35px rgba(168, 28, 28, 0.5), 0 0 50px rgba(245, 179, 53, 0.3);
+}
+
+@keyframes borderRotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floatAnim {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Three.js Canvas Background */
+#three-bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Timeline Vertical Line */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, #A81C1C 0%, #F5B335 50%, #A81C1C 100%);
+}
+
+@media (max-width: 768px) {
+  .timeline-line {
+    left: 24px;
+  }
+}
+
+/* Button 3D Press Interaction */
+.btn-3d {
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.btn-3d:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+.btn-3d:active {
+  transform: translateY(1px) scale(0.98);
+}
