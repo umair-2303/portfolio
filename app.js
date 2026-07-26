@@ -804,7 +804,7 @@ const Contact = () => {
               </h4>
               <div className="flex flex-wrap gap-4">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/umair-2303"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2 px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold text-sm transition-all"
@@ -814,7 +814,7 @@ const Contact = () => {
                 </a>
 
                 <a
-                  href="https://linkedin.com"
+                  href="https://linkedin.com/in/umair2303"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2 px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-[#0A66C2] font-semibold text-sm transition-all"
