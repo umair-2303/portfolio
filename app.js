@@ -479,8 +479,8 @@ const Skills = () => {
       skills: [
         {
           name: "React",
-          level: 85,
-          badge: "Advanced",
+          level: 75,
+          badge: "Intermediate",
           badgeColor: "bg-[#A81C1C]/15 text-[#61DAFB] border-[#A81C1C]/30",
           logo: (
             <svg viewBox="-11.5 -10.23174 23 20.46348" className="w-8 h-8 text-[#61DAFB]">
@@ -495,8 +495,8 @@ const Skills = () => {
         },
         {
           name: "JavaScript (ES6+)",
-          level: 85,
-          badge: "Advanced",
+          level: 73,
+          badge: "Intermediate",
           badgeColor: "bg-[#F7DF1E]/15 text-[#F7DF1E] border-[#F7DF1E]/30",
           logo: (
             <svg viewBox="0 0 128 128" className="w-8 h-8 rounded-lg">
@@ -520,7 +520,7 @@ const Skills = () => {
         },
         {
           name: "CSS3",
-          level: 90,
+          level: 85,
           badge: "Advanced",
           badgeColor: "bg-[#1572B6]/15 text-[#1572B6] border-[#1572B6]/30",
           logo: (
@@ -533,8 +533,8 @@ const Skills = () => {
         },
         {
           name: "Tailwind CSS",
-          level: 88,
-          badge: "Advanced",
+          level: 70,
+          badge: "Intermediate",
           badgeColor: "bg-[#06B6D4]/15 text-[#06B6D4] border-[#06B6D4]/30",
           logo: (
             <svg viewBox="0 0 24 24" className="w-8 h-8 text-[#06B6D4] fill-current">
@@ -703,8 +703,27 @@ const Contact = () => {
     if (!formData.name || !formData.email || !formData.message) return;
 
     setLoading(true);
+
+    // Build mailto link – sends form data directly to Muhammad Umair's Gmail
+    const recipient = "2008umairbhatti@gmail.com";
+    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Hello Muhammad Umair,\n\nYou have received a new message from your portfolio website.\n\n` +
+      `────────────────────────\n` +
+      `Name:    ${formData.name}\n` +
+      `Email:   ${formData.email}\n` +
+      `────────────────────────\n\n` +
+      `Message:\n${formData.message}\n\n` +
+      `─── Sent via Portfolio Contact Form ───`
+    );
+
+    const mailtoLink = `mailto:${recipient}?subject=${subject}&body=${body}`;
+
     setTimeout(() => {
       setLoading(false);
+      // Open the email client with pre-filled details
+      window.location.href = mailtoLink;
+
       setSubmitted(true);
 
       if (window.confetti) {
@@ -712,8 +731,8 @@ const Contact = () => {
       }
 
       setFormData({ name: "", email: "", message: "" });
-      setTimeout(() => setSubmitted(false), 5000);
-    }, 1200);
+      setTimeout(() => setSubmitted(false), 6000);
+    }, 800);
   };
 
   return (
@@ -854,8 +873,14 @@ const Contact = () => {
               </div>
 
               {submitted && (
-                <div className="p-4 rounded-xl bg-green-500/20 border border-green-500/40 text-green-300 text-sm font-semibold">
-                  {t.contact.successMsg}
+                <div className="p-4 rounded-xl bg-green-500/20 border border-green-500/40 text-green-300 text-sm font-semibold flex items-start space-x-3">
+                  <svg className="w-5 h-5 mt-0.5 flex-shrink-0 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <div>
+                    <p className="font-bold">Your email client has opened!</p>
+                    <p className="text-green-400 font-normal text-xs mt-0.5">Your message is pre-filled and ready to send to <span className="text-green-300 font-semibold">2008umairbhatti@gmail.com</span>. Just click Send in your email app.</p>
+                  </div>
                 </div>
               )}
 
