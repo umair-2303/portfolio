@@ -481,7 +481,7 @@ const Skills = () => {
           name: "React",
           level: 75,
           badge: "Intermediate",
-          badgeColor: "bg-[#A81C1C]/15 text-[#61DAFB] border-[#A81C1C]/30",
+          badgeColor: "bg-[#06B6D4]/15 text-[#61DAFB] border-[#06B6D4]/30",
           logo: (
             <svg viewBox="-11.5 -10.23174 23 20.46348" className="w-8 h-8 text-[#61DAFB]">
               <circle cx="0" cy="0" r="2" fill="currentColor"/>
